@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
+
 interface IContent {
   type: "user" | "gpt";
   value: string;
@@ -22,7 +25,8 @@ const handleKeyup = () => {
   });
   value.value = "";
   count++;
-  nextTick(async () => {
+  nextTick(() => {
+    console.log(prompt);
     if (contentsEle) {
       Array.from(contentsEle.children).at(-1)?.scrollIntoView();
       $fetch("/chat", {
@@ -43,7 +47,8 @@ const handleKeyup = () => {
             type: "gpt",
             value: "请求失败-TODO",
           });
-        });
+        })
+        .finally(() => hljs.highlightAll());
     }
   });
 };
@@ -57,7 +62,8 @@ const handleKeyup = () => {
         v-for="(content, index) in contents"
         :key="index"
       >
-        {{ content.value }}
+        <div v-if="content.type === 'user'">{{ content.value }}</div>
+        <pre v-else><code v-html="content.value"></code></pre>
       </div>
     </div>
     <div class="divider"></div>
@@ -76,7 +82,6 @@ const handleKeyup = () => {
 .chat {
   width: 100%;
   height: 100%;
-  color: $primary-color;
   border: 1px solid #f00;
 
   .divider {
@@ -91,15 +96,20 @@ const handleKeyup = () => {
     .content {
       width: 100%;
       padding: 12px;
-      color: #fff;
 
       &.user {
         text-align: right;
-        background-color: #ee3f4d;
       }
       &.gpt {
         text-align: left;
-        background-color: #ed9db2;
+      }
+
+      pre {
+        margin: 0;
+        code {
+          word-break: break-word;
+          white-space: pre-wrap;
+        }
       }
     }
   }

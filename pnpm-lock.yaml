@@ -10,6 +10,9 @@ devDependencies:
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
+  highlight.js:
+    specifier: ^11.7.0
+    version: 11.7.0
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
@@ -2727,6 +2730,11 @@ packages:
 
   /hash-sum@2.0.0:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
+    dev: true
+
+  /highlight.js@11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
     dev: true
 
   /hookable@5.5.3:
