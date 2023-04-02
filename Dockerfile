@@ -13,4 +13,4 @@ RUN npm i pm2 -g
 
 EXPOSE 8472
 
-ENTRYPOINT [ "pm2-runtime start ecosystem.config.js" ]
+# ENTRYPOINT [ "pm2-runtime start ecosystem.config.js" ]
