@@ -1,6 +1,6 @@
 FROM node:18.15.0
 
-WORKDIR /root/chatgpt
+WORKDIR /root
 
 COPY ./.output /root/chatgpt/.output
 # COPY ./package.json /root/chatgpt/package.json
@@ -13,4 +13,4 @@ RUN npm i pm2 -g
 
 EXPOSE 8472
 
-# ENTRYPOINT [ "pm2-runtime start ecosystem.config.js" ]
+ENTRYPOINT [ "pm2-runtime start /root/chatgpt/ecosystem.config.js" ]
