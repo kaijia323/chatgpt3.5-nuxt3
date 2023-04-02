@@ -5,7 +5,7 @@ WORKDIR /root/chatgpt
 COPY ./.output /root/chatgpt/.output
 # COPY ./package.json /root/chatgpt/package.json
 COPY ./ecosystem.config.js /root/chatgpt/ecosystem.config.js
-# VOLUME [ "/root/chatgpt" ]
+VOLUME [ "/root/chatgpt" ]
 # RUN yarn config set registry https://registry.yarnpkg.com
 # RUN yarn config set registry https://registry.npmmirror.com
 RUN npm i pm2 -g
