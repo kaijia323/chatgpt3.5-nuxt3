@@ -1,0 +1,14 @@
+version: "3"
+services:
+  chatgpt3.5-nuxt3:
+    image: kaijia323/chatgpt3.5-nuxt3
+    container_name: chatgpt3.5-nuxt3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8472:8472
+    restart: always
+    network_mode: "bridge"
+    entrypoint: bash -c "pm2-runtime start ecosystem.config.js"
+    # command: bash -c "npm run pm2:start"
