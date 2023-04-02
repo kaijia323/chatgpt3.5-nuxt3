@@ -48,9 +48,7 @@ const openaiChat = async (prompt: string) => {
   } catch (err) {
     const error = err as any;
     if (error.response) {
-      return {
-        ...error.response,
-      };
+      return error.response;
     }
 
     return error;
