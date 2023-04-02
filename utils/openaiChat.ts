@@ -53,8 +53,8 @@ const openaiChat = async (prompt: string) => {
       };
     }
 
-    // return error;
-    throw "error";
+    return error;
+    // throw "error";
   }
 };
 
