@@ -1,42 +1,41 @@
-# Nuxt 3 Minimal Starter
+# 通过 docker 使用，需要在服务器自行准备代理(clash 或其他)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+```shell
+# 拉取仓库
+# git clone git@github.com:kaijia323/chatgpt3.5-nuxt3.git
+git clone https://github.com/kaijia323/chatgpt3.5-nuxt3.git
+# 下载依赖
+npm i
+# 打包
+npm run build
+# 通过 docker-compose 运行
+docker-compose up -d
+# 浏览器打开
+localhost:8472
 ```
 
-## Development Server
+# 配置
 
-Start the development server on http://localhost:3000
+- 需要在当前项目创建 `config.json` 文件，自行准备代理
+  ```json
+  {
+    "apiKey": "openai的key",
+    "proxy": {
+      "host": "127.0.0.1",
+      "port": 7890
+    }
+  }
+  ```
 
-```bash
+# 本地运行
+
+```shell
+# 拉取仓库
+# git clone git@github.com:kaijia323/chatgpt3.5-nuxt3.git
+git clone https://github.com/kaijia323/chatgpt3.5-nuxt3.git
+# 下载依赖
+npm i
+# 项目根路径创建 config.json 如上的配置
+# 运行项目 需要本地准备代理 (clash客户端即可或其他)
 npm run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
