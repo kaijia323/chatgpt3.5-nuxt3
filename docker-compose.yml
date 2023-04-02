@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # volumes:
-    #   - ./:/root/chatgpt
+    volumes:
+      - ./:/root/chatgpt
     ports:
       - 8472:8472
     restart: always
