@@ -2,9 +2,9 @@ FROM node:18.15.0
 
 WORKDIR /root/chatgpt
 
-# COPY ./.output /root/chatgpt/.output
+COPY ./.output /root/chatgpt/.output
 # COPY ./package.json /root/chatgpt/package.json
-# COPY ./ecosystem.config.js /root/chatgpt/ecosystem.config.js
+COPY ./ecosystem.config.js /root/chatgpt/ecosystem.config.js
 # VOLUME [ "/root/chatgpt" ]
 # RUN yarn config set registry https://registry.yarnpkg.com
 # RUN yarn config set registry https://registry.npmmirror.com
