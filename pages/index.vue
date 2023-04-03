@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
+// import "highlight.js/styles/github.css";
+import "highlight.js/styles/vs2015.css";
 
 interface IContent {
   type: "user" | "gpt";
@@ -62,7 +63,9 @@ const handleKeyup = () => {
         v-for="(content, index) in contents"
         :key="index"
       >
-        <div v-if="content.type === 'user'">{{ content.value }}</div>
+        <div v-if="content.type === 'user'" class="user-question">
+          {{ content.value }}
+        </div>
         <pre v-else><code v-html="content.value"></code></pre>
       </div>
     </div>
@@ -88,6 +91,7 @@ const handleKeyup = () => {
     width: 100%;
     height: 1px;
     background-color: #f00;
+    transform: scaleY(0.5);
   }
 
   .contents {
@@ -95,10 +99,18 @@ const handleKeyup = () => {
     height: 70%;
     .content {
       width: 100%;
+      margin-bottom: 12px;
       padding: 12px;
 
       &.user {
-        text-align: right;
+        display: flex;
+        justify-content: end;
+        .user-question {
+          padding: 12px;
+          width: fit-content;
+          background-color: #d2357d;
+          border-radius: 8px;
+        }
       }
       &.gpt {
         text-align: left;
@@ -109,6 +121,7 @@ const handleKeyup = () => {
         code {
           word-break: break-word;
           white-space: pre-wrap;
+          border-radius: 8px;
         }
       }
     }
