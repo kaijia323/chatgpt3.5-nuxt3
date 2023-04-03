@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import hljs from "highlight.js";
+// import hljs from "highlight.js";
 // import "highlight.js/styles/github.css";
-import "highlight.js/styles/vs2015.css";
+// import "highlight.js/styles/vs2015.css";
 
 interface IContent {
   type: "user" | "gpt";
@@ -27,7 +27,6 @@ const handleKeyup = () => {
   value.value = "";
   count++;
   nextTick(() => {
-    console.log(prompt);
     if (contentsEle) {
       Array.from(contentsEle.children).at(-1)?.scrollIntoView();
       $fetch("/chat", {
@@ -48,8 +47,8 @@ const handleKeyup = () => {
             type: "gpt",
             value: "请求失败-TODO",
           });
-        })
-        .finally(() => hljs.highlightAll());
+        });
+      // .finally(() => hljs.highlightAll());
     }
   });
 };
@@ -85,35 +84,40 @@ const handleKeyup = () => {
 .chat {
   width: 100%;
   height: 100%;
-  border: 1px solid #f00;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
 
   .divider {
     width: 100%;
     height: 1px;
-    background-color: #f00;
+    background-color: $primary-color;
     transform: scaleY(0.5);
   }
 
   .contents {
     overflow-y: auto;
     height: 70%;
+    padding: 12px;
     .content {
       width: 100%;
       margin-bottom: 12px;
       padding: 12px;
+      color: #fff;
+      border-radius: 4px;
 
       &.user {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         .user-question {
           padding: 12px;
+          background-color: $primary-background-color;
           width: fit-content;
-          background-color: #d2357d;
-          border-radius: 8px;
+          border-radius: inherit;
         }
       }
       &.gpt {
         text-align: left;
+        background-color: $primary-background-color;
       }
 
       pre {
@@ -121,7 +125,7 @@ const handleKeyup = () => {
         code {
           word-break: break-word;
           white-space: pre-wrap;
-          border-radius: 8px;
+          border-radius: 4px;
         }
       }
     }
